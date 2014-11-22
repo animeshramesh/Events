@@ -1,0 +1,11 @@
+<%= form_tag("search_results", method: "post") do %>
+	
+	<label class="checkbox-inline">  <input type="checkbox" id="a" name="Hackathon" value="true" > Hackathon </label>
+	<label class="checkbox-inline">  <input type="checkbox" id="a" name="Movies" value="true"> Movie  </label>
+	<label class="checkbox-inline">  <input type="checkbox" id="a" name="Concert" value="true"> Concert </label>
+	<label class="checkbox-inline">  <input type="checkbox" id="a" name="Theatre" value="true"> Theatre </label>
+	<label class="checkbox-inline">  <input type="checkbox" id="a" name="Museum" value="true"> Museum </label>
+	<label class="checkbox-inline">  <input type="checkbox" id="a" name="Art" value="true"> Art </label> 
+	
+	<%= submit_tag("Search") %>
+<% end %>

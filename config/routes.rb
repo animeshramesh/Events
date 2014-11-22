@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   
-  resources :events
+   get 'events/search' => 'events#search'
+   post 'events/search' => 'events#search'
+  
+   get 'events/search_results' => 'events#search_results'
+   post 'events/search_results' => 'events#search_results'
 
-  resources :tickets
 
   get '/bookings/book' => 'bookings#book'
   post '/bookings/book' => 'bookings#book'
@@ -20,6 +23,8 @@ Rails.application.routes.draw do
   resources :bookings
   resources :showtimes  
   resources :locations
+  resources :events
+  resources :tickets
   devise_for :users
 
   root :to => "home#index"

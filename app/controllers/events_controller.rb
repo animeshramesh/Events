@@ -7,6 +7,24 @@ class EventsController < ApplicationController
     respond_with(@events)
   end
 
+  def search
+    @event_types = Event.pluck(:eventType)
+    #respond_with(@event_types)
+
+  end
+
+  def search_results
+    @event_types = Event.pluck(:eventType).uniq
+    @selected_types = []
+
+    @event_types.each do |type|
+      if params.has_key?(type) 
+        print type + " exists! \n"
+        @selected_types.push (type)
+      end
+    end
+  end
+
   def show
     respond_with(@event)
   end
