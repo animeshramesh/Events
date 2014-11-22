@@ -43,7 +43,7 @@ function myFunction() {
 			</select> </td>
 
         <td><form action="pay" onsubmit="myFunction(<%=showtime.cost %>)" id="carform">
-
+        	<%= hidden_field_tag 'show_id', showtime.id %>
   			<input type="submit" value="Go for it!">
 		</form></td>
 

@@ -30,6 +30,19 @@ class EventsController < ApplicationController
 
   end
 
+  def pay
+    selected_show = Showtime.find(params['show_id'])
+    total_cost = params['seats'].to_i * selected_show.cost
+    t = Ticket.new
+    t.userID = current_user.email
+    t.showtimeID = selected_show.id
+    t.seats = params['seats'].to_i
+    t.save
+
+    redirect_to '/tickets/my_tickets'
+
+  end
+
   def show
     respond_with(@event)
   end

@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  
+    
+   get 'tickets/my_tickets' => 'tickets#my_tickets' 
+   post 'tickets/my_tickets' => 'tickets#my_tickets'
+   
    get 'events/pay' => 'events#pay'
    post 'events/pay' => 'events#pay'
 

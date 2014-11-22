@@ -16,6 +16,10 @@ class TicketsController < ApplicationController
     respond_with(@ticket)
   end
 
+  def my_tickets
+    @tickets = Ticket.where(:userID => current_user.email)
+  end
+
   def edit
   end
 
