@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   
+   get 'events/pay' => 'events#pay'
+   post 'events/pay' => 'events#pay'
+
    get 'events/search' => 'events#search'
    post 'events/search' => 'events#search'
   

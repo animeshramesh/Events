@@ -1,1 +1,54 @@
-<%= @selected_types %>
+<%- model_class = Showtime -%>
+<script>
+function myFunction() {
+	seats = document.getElementById('seats').value; 
+    alert("You're about to pay for " + seats + " seats");
+}
+</script>
+
+<div class="page-header">
+  <h1>Search results</h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+
+      <th>Event Type</th>
+      <th>Event</th>
+      <th>Venue</th>
+      <th>Address</th>
+      <th><%= model_class.human_attribute_name(:date) %></th>
+      <th><%= model_class.human_attribute_name(:time) %></th>
+      <th><%= model_class.human_attribute_name(:cost) %></th>
+      <th>Seats </th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @showtimes.each do |showtime| %>
+      <tr>
+
+        <td><%= Event.find(showtime.eventID).eventType %></td>
+        <td><%= Event.find(showtime.eventID).name %></td>
+        <td><%= Location.find(showtime.locID).name %></td>
+        <td><%= Location.find(showtime.locID).address %></td>
+        <td><%= showtime.date %></td>
+        <td><%= showtime.time %></td>
+        <td><%= showtime.cost %></td>
+       	<td><select name="seats" form="carform" id="seats">
+  				<option name="boom" value="1">1</option>
+  				<option name="boom" value="2">2</option>
+  				<option name="boom" value="3">3</option>
+  				<option name="boom" value="4">4</option>
+			</select> </td>
+
+        <td><form action="pay" onsubmit="myFunction(<%=showtime.cost %>)" id="carform">
+
+  			<input type="submit" value="Go for it!">
+		</form></td>
+
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>

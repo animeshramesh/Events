@@ -23,6 +23,11 @@ class EventsController < ApplicationController
         @selected_types.push (type)
       end
     end
+    event_ids = Event.where(:eventType => @selected_types).pluck(:id).uniq
+    @showtimes = Showtime.where(:eventID => event_ids)
+    #@showtimes = Showtime.joins('INNER JOIN events ON events.id = showtimes.eventID')
+
+
   end
 
   def show
