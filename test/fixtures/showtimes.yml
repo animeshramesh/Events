@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  eventID: 1
+  locID: 1
+  date: MyString
+  time: MyString
+  cost: 1
+
+two:
+  eventID: 1
+  locID: 1
+  date: MyString
+  time: MyString
+  cost: 1

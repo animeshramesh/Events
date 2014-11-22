@@ -1,0 +1,45 @@
+<%= form_for @ticket, :html => { :class => "form-horizontal ticket" } do |f| %>
+
+    <% if @ticket.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@ticket.errors.count, "error") %> prohibited this ticket from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @ticket.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :userID, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :userID, :class => 'form-control' %>
+    </div>
+    <%= error_span(@ticket[:userID]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :showtimeID, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :showtimeID, :class => 'form-control' %>
+    </div>
+    <%= error_span(@ticket[:showtimeID]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :seats, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :seats, :class => 'form-control' %>
+    </div>
+    <%= error_span(@ticket[:seats]) %>
+  </div>
+
+
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            tickets_path, :class => 'btn btn-default' %>
+
+<% end %>

@@ -1,0 +1,59 @@
+<%= form_for @showtime, :html => { :class => "form-horizontal showtime" } do |f| %>
+
+    <% if @showtime.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@showtime.errors.count, "error") %> prohibited this showtime from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @showtime.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :eventID, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :eventID, :class => 'form-control' %>
+    </div>
+    <%= error_span(@showtime[:eventID]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :locID, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :locID, :class => 'form-control' %>
+    </div>
+    <%= error_span(@showtime[:locID]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :date, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :date, :class => 'form-control' %>
+    </div>
+    <%= error_span(@showtime[:date]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :time, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :time, :class => 'form-control' %>
+    </div>
+    <%= error_span(@showtime[:time]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :cost, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :cost, :class => 'form-control' %>
+    </div>
+    <%= error_span(@showtime[:cost]) %>
+  </div>
+
+
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            showtimes_path, :class => 'btn btn-default' %>
+
+<% end %>

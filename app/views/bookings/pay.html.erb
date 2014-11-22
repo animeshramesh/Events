@@ -1,0 +1,27 @@
+<h1> Pay </h1>
+
+<script>
+function myFunction() {
+    alert("I am an alert box!");
+}
+</script>
+
+<div>
+<%= @movie %> <br>
+<%= @theatre %> <br>
+<%= @show.date %> <br>
+<%= @show.cost %> <br>
+
+</div>
+
+<div>
+	<%= form_tag('final') do %>
+
+      <%= label_tag :Seats %>
+      <%= text_field_tag :seat_count, params[:seat_count] %>
+      <%= hidden_field_tag 'show', @show.id %>
+      <%= submit_tag "Pay!", class: "btn btn-large btn-primary",  :onclick =>"alert('Payment successful!')"%>
+    <% end %>
+
+</div>
+

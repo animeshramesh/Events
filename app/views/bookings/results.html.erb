@@ -1,0 +1,36 @@
+<%- model_class = Show -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Theatre</th>
+      <th>Movie</th>
+      <th>Language</th>
+      <th><%= model_class.human_attribute_name(:date) %></th>
+      <th><%= model_class.human_attribute_name(:time) %></th>
+      <th><%= model_class.human_attribute_name(:cost) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @shows.each do |show| %>
+      <tr>
+        <td><%= Cinema.where(id: show.theatreID).first.name %></td>
+        <td><%= Movie.where(id: show.movieID).first.title %></td>
+        <td><%= Movie.where(id: show.movieID).first.language%></td>
+        <td><%= show.date %></td>
+        <td><%= show.time %></td>
+        <td><%= show.cost %></td>
+        <td>
+          <% movie_hash = {"show_id" => show.id} %>
+          <%= button_to "Book", :action=>"pay", form: movie_hash%>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_show_path,
+            :class => 'btn btn-primary' %>

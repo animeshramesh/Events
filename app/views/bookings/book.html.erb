@@ -1,0 +1,57 @@
+<script>
+function selectCity(valueToSelect, id, idToBePassed)
+{   
+    var element = document.getElementById(id);
+    element.data = valueToSelect;
+    element.value = valueToSelect;
+}
+</script>
+
+<!-- Single button -->
+
+<%= form_tag('results') do %>
+<div class="btn-group">
+  <input type="text" class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="city" name = "city" value="Select city">  </input>
+  <ul class="dropdown-menu" role="menu">
+  	<% City.all.each do |c| %>
+  		<li><a href="#" onclick="selectCity('<%= c.name %>', 'city')"><%=c.name%></a></li>
+  	<%end%>
+  </ul>
+</div>
+
+
+<div class="btn-group">
+  <input type="text" class="btn btn-default dropdown-toggle" style="margin-left:25px" data-toggle="dropdown" id="theatre" name="theatre" value="Select theatre">  
+  </input>
+  <ul class="dropdown-menu" role="menu">
+  	<% Cinema.all.each do |c| %>
+  		<li><a href="#" onclick="selectCity('<%= c.name %>', 'theatre')"><%=c.name%></a></li>
+  	<%end%>
+  </ul>
+</div>
+
+
+
+<div class="btn-group">
+  <input type="text" class="btn btn-default dropdown-toggle" style="margin-left:25px" data-toggle="dropdown" id="movie" name="movie" value="Select movie">
+  </input>
+  <ul class="dropdown-menu" role="menu">
+  	<% Movie.all.each do |c| %>
+  		<li><a href="#" onclick="selectCity('<%= c.title %>', 'movie')"><%=c.title + ' (' + c.language + ')'%></a></li>
+  	<%end%>
+  </ul>
+</div>
+</div>
+
+<%= submit_tag 'Search', class: "button" %> <% end %>
+
+
+<!-- <div>
+<button type="button" class="btn btn-default"> Find! 
+</button>
+</div> -->
+
+
+
+
+
