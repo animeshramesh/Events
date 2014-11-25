@@ -5,25 +5,34 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:userID) %></th>
-      <th><%= model_class.human_attribute_name(:showtimeID) %></th>
-      <th><%= model_class.human_attribute_name(:seats) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th>Event Type</th>
+      <th>Event Name</th>
+      <th>Address</th>
+      <th>Seats </th>
+      <th>Cost</th>
+      <th>Date</th>
+      <th>Time</th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
     <% @tickets.each do |ticket| %>
       <tr>
-        <td><%= link_to ticket.id, ticket_path(ticket) %></td>
-        <td><%= ticket.userID %></td>
-        <td><%= ticket.showtimeID %></td>
+        <% eventID = Showtime.find(ticket.showtimeID).eventID %>
+        <% locID = Showtime.find(ticket.showtimeID).locID%>
+        <% e = Event.find (eventID) %>
+        <% show = Showtime.find (ticket.showtimeID) %>
+        <% loc = Location.find (locID) %>
+        <td><%= e.eventType %></td>
+        <td><%= e.name %></td>
+        <td><%= loc.name + ", " + loc.address %></td>
         <td><%= ticket.seats %></td>
-        <td><%=l ticket.created_at %></td>
+        <td><%= ticket.seats * show.cost %></td>
+        <td><%= show.date %></td>
+        <td><%= show.time %></td>
+
         <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_ticket_path(ticket), :class => 'btn btn-default btn-xs' %>
+
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       ticket_path(ticket),
                       :method => :delete,
@@ -35,6 +44,3 @@
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_ticket_path,
-            :class => 'btn btn-primary' %>
