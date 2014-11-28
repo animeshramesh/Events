@@ -12,7 +12,7 @@
       <th>Cost</th>
       <th>Date</th>
       <th>Time</th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -30,7 +30,11 @@
         <td><%= ticket.seats * show.cost %></td>
         <td><%= show.date %></td>
         <td><%= show.time %></td>
+        <td>
+        <%= link_to "Add Review", {:controller => "reviews", :action => "new", :event => eventID}, 
+        class: 'btn btn-xs btn-warning' %>
 
+        </td>
         <td>
 
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
@@ -39,6 +43,7 @@
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                       :class => 'btn btn-xs btn-danger' %>
         </td>
+        
       </tr>
     <% end %>
   </tbody>

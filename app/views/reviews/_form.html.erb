@@ -1,0 +1,12 @@
+<%= simple_form_for @review, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :userID %>
+  <%= error_span(@review[:userID]) %>
+  <%= f.input :eventID %>
+  <%= error_span(@review[:eventID]) %>
+  <%= f.input :reviewText %>
+  <%= error_span(@review[:reviewText]) %>
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                reviews_path, :class => 'btn btn-default' %>
+<% end %>

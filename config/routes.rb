@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-    
+    get 'reviews/my_reviews' => 'reviews#my_reviews'
+  
+
+   post 'reviews/submit' => 'reviews#submit'
+
+   
+
    get 'tickets/my_tickets' => 'tickets#my_tickets' 
    post 'tickets/my_tickets' => 'tickets#my_tickets'
    
@@ -32,6 +38,7 @@ Rails.application.routes.draw do
   resources :events
   resources :tickets
   devise_for :users
+  resources :reviews
 
   root :to => "home#index"
 
