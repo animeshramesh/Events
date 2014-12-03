@@ -16,7 +16,7 @@
     <% @reviews.each do |review| %>
       <tr>
         <% e = Event.find (review.eventID) %>
-        <td><%= e.name %></td>
+        <td width="170"><%= e.name %></td>
         <td><%= review.reviewText %></td>
         <td><%=l review.created_at %></td>
         <td>

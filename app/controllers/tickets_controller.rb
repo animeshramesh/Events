@@ -3,8 +3,7 @@ class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
 
   def index
-    @tickets = Ticket.all
-    respond_with(@tickets)
+    redirect_to '/tickets/my_tickets'
   end
 
   def show

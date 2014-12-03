@@ -7,7 +7,6 @@
 <%= form_tag 'submit' do %>
 	<div> Review Text </div>
 	<%= text_field_tag 'reviewText' %>
-	<%= hidden_field(:eventID, :value => @event.id) %>
 	<!-- <input type="hidden" id="eventID" name="eventID" value="<% @event.id %>" /> -->
     <!-- <button type="submit" class="btn btn-primary" data-toggle="dropdown" aria-expanded="false">Submit</button> -->
     <%= submit_tag %>
